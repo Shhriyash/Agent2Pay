@@ -1,6 +1,10 @@
-# AI Agent Payments Prototype Scaffold
+# Agent2Pay
 
-This repo is a split-service prototype for an AI payment assistant:
+A conversational payment assistant split across two services. The agent handles the conversation, pulls the payment details out of natural language, verifies the receiver, and only then hands execution to a separate gateway that owns the money movement. Keeping those two apart means the LLM never touches the ledger directly.
+
+Live demo: https://ap2-lovat.vercel.app/
+
+The services:
 
 - `agent_service`: conversation orchestration, slot extraction, receiver verification flow, and payment execution control.
 - `gateway_service`: payment/balance backend (dummy processor for prototype).
@@ -8,10 +12,13 @@ This repo is a split-service prototype for an AI payment assistant:
 
 ## Documentation
 
-- [Agent architecture and flow details](./AGENT.md)
-- [Backend architecture, endpoint and data flow](./BACKEND.md)
-- [Brutal security analysis and risky query catalog](./BRUTAL_SECURITY_ANALYSIS.md)
-- [Auth hardening phased plan and progress](./PROTOTYPE_AUTH_HARDENING_PLAN.md)
+- [Agent architecture and flow](./docs/agent-architecture.md)
+- [Backend architecture, endpoints and data flow](./docs/backend-architecture.md)
+- [Security analysis and risky query catalog](./docs/security-analysis.md)
+- [Auth hardening plan and progress](./docs/auth-hardening-plan.md)
+- [Guardrail plan](./docs/guardrail-plan.md)
+- [Dashboard notes](./docs/dashboard.md)
+- [Runbook](./docs/runbook.md)
 
 ## Technology Stack
 
@@ -38,9 +45,9 @@ This repo is a split-service prototype for an AI payment assistant:
 ## Codebase Structure
 
 ```text
-ap2/
+Agent2Pay/
 |-- README.md
-|-- AGENT.md
+|-- docs/
 |-- .env.agent.example
 |-- scripts/
 |   |-- bootstrap.ps1
@@ -105,7 +112,7 @@ All commands below assume you are running from the repo root.
 
 ```powershell
 git clone <your-repository-url>
-cd ap2
+cd Agent2Pay
 ```
 
 ### 3) Create env files
