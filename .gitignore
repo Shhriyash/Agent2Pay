@@ -52,6 +52,15 @@ secret.*
 *.secrets
 *.key
 *.pem
+*.p12
+*.pfx
+id_rsa*
+credentials.json
+key.txt
+*serviceaccount*.json
+*service-account*.json
+*firebase-adminsdk*.json
+!*.example
 
 # IDE
 .idea/
